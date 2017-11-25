@@ -42,3 +42,33 @@ c:\users\cromar\documents\visual studio 2012\Projects\AlumnosWebApp\AlumnosWebAp
 c:\users\cromar\documents\visual studio 2012\Projects\AlumnosWebApp\AlumnosWebApp\obj\Debug\AlumnosWebApp.csprojResolveAssemblyReference.cache
 c:\users\cromar\documents\visual studio 2012\Projects\AlumnosWebApp\AlumnosWebApp\obj\Debug\AlumnosWebApp.dll
 c:\users\cromar\documents\visual studio 2012\Projects\AlumnosWebApp\AlumnosWebApp\obj\Debug\AlumnosWebApp.pdb
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\obj\Debug\AlumnosWebApp.csprojResolveAssemblyReference.cache
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\obj\Debug\AlumnosWebApp.csproj.CoreCompileInputs.cache
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\obj\Debug\AlumnosWebApp.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\obj\Debug\AlumnosWebApp.pdb
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\AlumnosWebApp.dll.config
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\AlumnosWebApp.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\AlumnosWebApp.pdb
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\Newtonsoft.Json.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\EntityFramework.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Net.Http.Formatting.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.Helpers.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.Http.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.Http.WebHost.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.Mvc.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.Razor.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.WebPages.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\System.Web.WebPages.Razor.xml
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\EntityFramework.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.Helpers.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.Http.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.Mvc.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.Optimization.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.Providers.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.Razor.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.WebPages.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\SERGIO\Source\Repos\AlumnosWebApp\AlumnosWebApp\bin\es\System.Web.WebPages.Razor.resources.dll

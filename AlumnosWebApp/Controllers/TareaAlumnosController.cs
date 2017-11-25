@@ -1,109 +1,124 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using AlumnosWebApp.Models;
+using System.Collections.Generic;
 
 namespace AlumnosWebApp.Controllers
 {
     public class TareaAlumnosController : ApiController
+
     {
+
         private AlumnosWebAppContext db = new AlumnosWebAppContext();
 
         // GET api/TareaAlumnos
-        public IEnumerable<TareaAlumno> GetTareaAlumnoes()
+        public IQueryable<TareaAlumno> GetTareaAlumnoes()
         {
-            var tareaalumnoes = db.TareaAlumnoes.Include(t => t.Tarea).Include(t => t.Alumno);
-            return tareaalumnoes.AsEnumerable();
+             return db.TareaAlumnoes; 
+        }
+
+        [Route("api/TareaAlumnos/GetTareaAlumnosByEval/{evaluado}")]
+        public List<TareaAlumno> GetTareaAlumnosByEval(bool evaluado)         
+        {
+            var data = db.TareaAlumnoes.Where(x => x.Evaluado == evaluado).ToList();             
+            db.Configuration.LazyLoadingEnabled = false;            
+            return data;
         }
 
         // GET api/TareaAlumnos/5
-        public TareaAlumno GetTareaAlumno(int id)
+        [ResponseType(typeof(TareaAlumno))]
+        [Route("api/TareaAlumnos/{idTarea}/{idAlumno}")]
+        public IHttpActionResult GetTareaAlumno(int idTarea, int idAlumno)
         {
-            TareaAlumno tareaalumno = db.TareaAlumnoes.Find(id);
-            if (tareaalumno == null)
+            try
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+                TareaAlumno tareaAlumno = db.TareaAlumnoes.Where(x => x.IdTarea == idTarea && x.IdAlumno == idAlumno).FirstOrDefault();
+                 if (tareaAlumno == null)
+                    return NotFound();
+                 return Ok(tareaAlumno); 
             }
-
-            return tareaalumno;
+            catch (Exception ex)
+            {
+                return Ok(new TareaAlumno() { Mensaje = ex.Message });
+            }
         }
 
         // PUT api/TareaAlumnos/5
-        public HttpResponseMessage PutTareaAlumno(int id, TareaAlumno tareaalumno)
+        [ResponseType(typeof(void))]
+        [Route("api/TareaAlumnos/{idTarea}/{idAlumno}")]
+        public IHttpActionResult PutTareaAlumno(int idTarea, int idAlumno, TareaAlumno tareaAlumno)
         {
-            if (ModelState.IsValid && id == tareaalumno.IdTarea)
-            {
-                db.Entry(tareaalumno).State = EntityState.Modified;
-
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        // POST api/TareaAlumnos
-        public HttpResponseMessage PostTareaAlumno(TareaAlumno tareaalumno)
-        {
-            if (ModelState.IsValid)
-            {
-                db.TareaAlumnoes.Add(tareaalumno);
-                db.SaveChanges();
-
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, tareaalumno);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = tareaalumno.IdTarea }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        // DELETE api/TareaAlumnos/5
-        public HttpResponseMessage DeleteTareaAlumno(int id)
-        {
-            TareaAlumno tareaalumno = db.TareaAlumnoes.Find(id);
-            if (tareaalumno == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            db.TareaAlumnoes.Remove(tareaalumno);
-
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (idTarea != tareaAlumno.IdTarea || idAlumno != tareaAlumno.IdAlumno)
+                return BadRequest();
+            db.Entry(tareaAlumno).State = EntityState.Modified;
             try
             {
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                if (!TareaAlumnoExists(idTarea, idAlumno))
+                    return NotFound();
+                else
+                    throw;
             }
+            return StatusCode(HttpStatusCode.NoContent);
+        }
 
-            return Request.CreateResponse(HttpStatusCode.OK, tareaalumno);
+        // POST api/TareaAlumnos
+        [ResponseType(typeof(TareaAlumno))]
+        public IHttpActionResult PostTareaAlumno(TareaAlumno tareaAlumno)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            db.TareaAlumnoes.Add(tareaAlumno);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (TareaAlumnoExists(tareaAlumno.IdTarea, tareaAlumno.IdAlumno))
+                    return Conflict();
+                else
+                    throw;
+            }
+            return CreatedAtRoute("DefaultApi", new { id = tareaAlumno.IdTarea },
+           tareaAlumno);
+        }
+
+        // DELETE api/TareaAlumnos/5
+        [ResponseType(typeof(TareaAlumno))]
+        [Route("api/TareaAlumnos/{idTarea}/{idAlumno}")]
+        public IHttpActionResult DeleteTareaAlumno(int idTarea, int idAlumno)
+        {
+            TareaAlumno tareaAlumno = db.TareaAlumnoes.Where(x => x.IdTarea == idTarea && x.IdAlumno == idAlumno).FirstOrDefault();
+
+            if (tareaAlumno == null)
+                return NotFound();
+            db.TareaAlumnoes.Remove(tareaAlumno);
+            db.SaveChanges();
+            return Ok(tareaAlumno);
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            if (disposing)
+                db.Dispose();
             base.Dispose(disposing);
+        }
+        private bool TareaAlumnoExists(int idTarea, int idAlumno)
+        {
+            return db.TareaAlumnoes.Count(e => e.IdTarea == idTarea && e.IdAlumno == idAlumno) > 0;
         }
     }
 }
